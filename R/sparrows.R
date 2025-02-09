@@ -1,0 +1,37 @@
+#' Body measurements of female sparrows
+#'
+#' Data extracted from the classical report by Hermon Bumpus (1898) who measured
+#' morphological variables in sparrows, after a severe storm. This data subset
+#' consists of five body measurements of 49 female sparrows, classified
+#' according to their survival status (21 survived, 28 did not survive).
+#'
+#' @docType data
+#'
+#' @usage data(sparrows)
+#'
+#' @format A data frame with 49 rows and 6 variables:
+#' \describe{
+#'   \item{\code{Survivorship}}{A factor with two levels ("S" = Survived, "NS"
+#'   = Did not survive)}
+#'   \item{\code{Total_length}}{Total length (mm), a numeric vector}
+#'   \item{\code{Alar_extent}}{Alar extent (mm), a numeric vector}
+#'   \item{\code{L_beak_head}}{Length of beak and head (mm), a numeric vector}
+#'   \item{\code{L_humerus}}{Length of humerus (mm), a numeric vector}
+#'   \item{\code{L_keel_sternum}}{Length of keel of sternum (mm), a numeric
+#'   vector}
+#'}
+#'
+#' @keywords datasets
+#'
+#' @references
+#' Bumpus, H.C. (1898). The elimination of the unfit as illustrated by the
+#' introduced sparrow, \emph{Passer domesticus}. \emph{Biological Lectures},
+#' 11th Lecture. Marine Biology Laboratory, Woods Hole, MA, 209–26.
+#'
+#' Manly, B.F.J., Navarro Alberto, J.A. and Gerow, K. (2024) \emph{Multivariate
+#' Statistical Methods. A Primer}. 5th Edition. Boca Raton, CRC Press.
+#'
+#' @examples
+#' data(sparrows)
+#' str(sparrows)
+"sparrows"

@@ -1,0 +1,22 @@
+Package: smsets
+Date: 2024-12-23
+Title: Simple multivariate statistical estimation and tests
+Version: 0.0.0.9000
+Authors@R: 
+    person(given = "Jorge",
+           family = "Navarro Alberto",
+           role = c("aut", "cre"),
+           email = "ganava4@gmail.com", 
+           comment = c(ORCID = "0000-0002-5027-6908"))
+Description: A collection of simple parameter estimation and tests for the comparison of multivariate means and variation, covered in Chapter 4 of the book Multivariate Statistical Methods. A Primer. 5th edition.
+License: MIT + file LICENSE
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.2
+Depends: 
+    R (>= 3.6)
+LazyData: true
+Imports: stringr, Hotelling
+Suggests: 
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3
