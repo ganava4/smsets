@@ -19,8 +19,8 @@ data(skulls)
 }
 \description{
 Measurements made on male skulls from the area of Thebes in Egypt. There are
-samples of 30 skulls from each of five periods: the early predynastic period
-(circa 4000 BC), the late predynastic period (circa 3300 BC), the 12th and
+samples of 30 skulls from each of five periods: the Early Predynastic period
+(circa 4000 BC), the Late Predynastic period (circa 3300 BC), the 12th and
 13th Dynasties (circa 1850 BC), the Ptolemaic period (circa 200 BC), and the
 Roman period (circa AD 150). Four measurements (mm) are available on each skull.
 }

@@ -8,7 +8,7 @@ Authors@R:
            role = c("aut", "cre"),
            email = "ganava4@gmail.com", 
            comment = c(ORCID = "0000-0002-5027-6908"))
-Description: A collection of simple parameter estimation and tests for the comparison of multivariate means and variation, covered in Chapter 4 of the book Multivariate Statistical Methods. A Primer. 5th edition.
+Description: A collection of simple parameter estimation and tests for the comparison of multivariate means and variation, covered in Chapters 4 and 5 of the book Multivariate Statistical Methods. A Primer. 5th edition.
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
@@ -16,7 +16,7 @@ RoxygenNote: 7.3.2
 Depends: 
     R (>= 3.6)
 LazyData: true
-Imports: stringr, Hotelling
+Imports: stringr, data.table, Hotelling, biotools
 Suggests: 
     testthat (>= 3.0.0)
 Config/testthat/edition: 3
