@@ -1,0 +1,21 @@
+\contentsline {section}{Abstract}{2}{section*.2}%
+\contentsline {section}{\numberline {1}Comparison of Mean Values for Two Samples}{2}{section.1}%
+\contentsline {subsection}{\numberline {1.1}Comparison of Mean Values for Two Samples: The Single-Variable Case}{2}{subsection.1.1}%
+\contentsline {subsubsection}{\numberline {1.1.1}Example}{2}{subsubsection.1.1.1}%
+\contentsline {subsubsection}{\numberline {1.1.2}Simultaneous (Multiple) Univariate Tests on Several variables}{3}{subsubsection.1.1.2}%
+\contentsline {section}{\numberline {2}Comparison of Mean Values for Two Samples: The Multivariate Case}{4}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Hotelling's \(T^2\) test}{5}{subsection.2.1}%
+\contentsline {section}{\numberline {3}Comparison of Variation for Two Samples}{6}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Comparison of Variation for Two Samples: The Single-Variable Case}{6}{subsection.3.1}%
+\contentsline {subsubsection}{\numberline {3.1.1}\emph {F}-test and Levene's test}{6}{subsubsection.3.1.1}%
+\contentsline {subsubsection}{\numberline {3.1.2}Simultaneous (Multiple) Univariate Tests on Several variables}{7}{subsubsection.3.1.2}%
+\contentsline {section}{\numberline {4}Comparison of Variation for Two Samples: The Multivariate Case}{10}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Two-sample Levene's test based on Hotelling's \(T^2\) for the comparison of multivariate variation}{10}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Van Valen's test}{11}{subsection.4.2}%
+\contentsline {section}{\numberline {5}Comparison of Means for Several Samples}{15}{section.5}%
+\contentsline {subsection}{\numberline {5.1}The Single-Variable Case: One-factor ANOVA}{15}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}The Multivariate Case: One-factor MANOVA}{15}{subsection.5.2}%
+\contentsline {section}{\numberline {6}Comparison of Variation for Several Samples: The Multivariate Case}{17}{section.6}%
+\contentsline {subsection}{\numberline {6.1}Testing the equality of several covariance matrices: Box's \emph {M} test}{17}{subsection.6.1}%
+\contentsline {section}{\numberline {7}Extra function: Penrose.dist}{19}{section.7}%
+\contentsline {section}{References}{21}{section*.3}%

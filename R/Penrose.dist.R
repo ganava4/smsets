@@ -21,8 +21,7 @@
 #'
 #' @description
 #' Computes Penrose's distance between \emph{m} multivariate populations, when
-#' information is available on the means, variances, and covariances of the
-#' populations.
+#' information is available on the means and variances of the populations.
 #'
 #' @param x A data frame with \eqn{p + 1} columns (one factor and \emph{p}
 #' response variables).

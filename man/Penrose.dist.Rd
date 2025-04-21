@@ -41,8 +41,7 @@ names.  \cr
 }
 \description{
 Computes Penrose's distance between \emph{m} multivariate populations, when
-information is available on the means, variances, and covariances of the
-populations.
+information is available on the means and variances of the populations.
 }
 \details{
 Let the mean of \eqn{X_k} in population \emph{i} be \eqn{\mu_{ki}},

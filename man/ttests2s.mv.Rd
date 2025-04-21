@@ -35,8 +35,9 @@ the degrees of freedom is used.}
 \item{P.adjust}{p-value correction method, a character string. Can be
 abbreviated.}
 
-\item{unit}{Physical units of the response variable useful to fully
-characterize raw effect sizes.}
+\item{unit}{A character string in cases in which all response variables are
+measured using the same physical units. Useful to fully characterize raw
+effect sizes. The default value is the character string \code{"units"}.}
 }
 \value{
 Returns an object of class \code{"ttests2s.mv"}, a list containing

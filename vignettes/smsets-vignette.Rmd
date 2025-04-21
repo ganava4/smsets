@@ -1,0 +1,279 @@
+---
+title: "**smsets: Simple multivariate statistical estimation and tests**"
+author: Jorge A. Navarro Alberto
+output:
+  pdf_document:
+    toc: yes
+    toc_depth: 3
+    highlight: null
+    number_sections: yes
+bibliography: REFVIGNETTE.bib
+csl: journal-of-biogeography
+vignette: >
+  %\VignetteIndexEntry{smsets-vignette}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+# Abstract {-}
+
+The document describes the functions implemented in the `smsets` package, which focuses on the estimation and comparison of means and measures of variation, and one distance measure (Penrose's distance) as described in Chapters 4 and 5 of the book _Multivariate Statistical Methods: A Primer. 5th Edition_ (MSMAP5) by Manly et al. -@Manly2024. Worked examples for each function are presented, all of them characterized by the simple input function arguments, given the simple data layout needed to perform the statistical analyses (ranging from two univariate/multivariate samples to multivariate samples classified by one-single factor with *m* levels). Multiple two-sample t-tests and Levene tests on more than one response vector can be optionally corrected by any of the significance level adjustment methods for multiple comparisons offered by the `p.adjust` function. Effects sizes are also computed in these multiple univariate tests. The two-sample comparison of multivariate means is performed by Hotelling’s test while the comparison of multivariate variation in two samples can be executed with two unconventional methods: a Levene’s test based on Hotelling's $T^2$, and van Valen’s test. The comparison of multivariate means for a single factor is also available as well as the comparison of variation using Box’s M test using an approximate F-statistic. Finally, a Penrose’s distance calculator has been implemented to offer
+
+# Comparison of Mean Values for Two Samples
+
+Tests of significance for means and variances can be performed when several variables are measured on the same sample units and the approach to be taken can be either univariate or multivariate. This vignette covers both approaches, using `base` R- commands and functions implemented in the `smsets` package to ease the calculations described in Chapter 4 of the MSMAP5.
+
+## Comparison of Mean Values for Two Samples: The Single-Variable Case
+
+The standard approach for the comparison of means for two univariate samples is the *t*-test. This can be easily computed using the `base` function [`t.test`](https://www.rdocumentation.org/packages/stats/versions/3.6.2/topics/t.test) for the case of two (non-paired) samples. The `alternative` argument is useful for the specification of the type of alternative hypothesis to be considered (either one-sided (`less` or `greater`) or `two.sided`). In addition, the user may choose whether the two population variances are treated as equal (`var.equal = TRUE`) or not (`var.equal = FALSE`, the default). See the documentation of [t.test](https://www.rdocumentation.org/packages/stats/versions/3.6.2/topics/t.test) for details.
+
+### Example
+
+Consider the Bumpus' sparrows data described in Section 1.1 of MSMAP5. These data were used to exemplify most of the tests of significance in Chapter 4. The corresponding data frame **sparrows** is included in `smsets` and can be invoked once the package has been loaded into the R session.
+
+```{r, eval = TRUE, comment = ""}
+library(smsets)
+data("sparrows")
+str(sparrows)
+```
+
+The data frame **sparrows** contains the two-level factor `Survivorship` (with levels `S` and `NS`). The R-code giving the list of means and variances for all variables and the univariate *t-*test for `Total_length` as shown in Table 4.1 of MSMAP5, are
+
+```{r, eval = TRUE, comment = ""}
+# Table 4.1
+# Means
+aggregate(sparrows[, 2:5], by = list(Survivorship = sparrows$Survivorship),
+          FUN = mean)
+# Variances
+aggregate(sparrows[, 2:5], by = list(Survivorship = sparrows$Survivorship),
+          FUN = var)
+# t.test using a formula
+t.test(Total_length ~ Survivorship, data = sparrows, var.equal = TRUE)
+```
+
+To produce the corresponding t-tests for any of the remaining four variables, the last expression has to be modified by writing the chosen variable name before the \~ symbol. The `smsets` package facilitates this task by implementing tests for differences between sample means for all variables.
+
+### Simultaneous (Multiple) Univariate Tests on Several variables
+
+Assume that *p* variables are measured for two independent samples. Function `ttests2s.mv` in the `smsets` package extends the `t.test` function to produce all *p* univariate t-tests; the function includes a `P.adjust` argument useful to correct significance levels of multiple t-tests by any of the adjustment methods for multiple comparisons implemented in the function `p.stats`. The following code executes function `ttests2s.mv` with Bonferroni's correction for the five two-sided t-tests shown in table 4.1. Notice that `level1` is a character string identifying "Sample 1". The string is `"S"` in this case; it is one of the factor levels in `group`. In addition, all morphological variables in the sparrows data frame are measured in mm, thus the character string for `unit` is `"mm"` :
+
+```{r, eval = TRUE, comment = ""}
+# Two-sample t-tests with p values adjusted by the Bonferroni correction. 
+# The default alternatives are two-sided.
+ttests.sparrows <- ttests2s.mv(sparrows, group = Survivorship, level1 = "S", 
+                               var.equal = TRUE, P.adjust = "bonferroni", unit = "mm")
+ttests.sparrows
+
+```
+
+Compare these Bonferroni-corrected *p*-values with those shown in Table 4.1.
+
+# Comparison of Mean Values for Two Samples: The Multivariate Case
+
+In the multivariate case, covariance between all possible pairs of variables are accounted for in the calculation of test statistics developed to test the difference of mean vectors. For the comparison of two multivariate samples, a generalization of the t-test is Hotelling's $T^2$ test, introduced in Section 4.3 of MSMAP5.
+
+## Hotelling's $T^2$ test
+
+The multivariate comparison of mean measurements between survivor and nonsurvivor Bumpus’ sparrows can be obtained with the `hotelling.test` function from package [Hotelling](https://cran.r-project.org/package=Hotelling) [@Curran2021].
+
+```{r, eval = TRUE, comment = ""}
+library(Hotelling)  
+#  Hotelling's T2 test. The result is a list
+T2.sparrows <- with(sparrows, hotelling.test(Total_length + Alar_extent + 
+                                             L_beak_head + L_humerus + 
+                                             L_keel_sternum ~ Survivorship))
+# Output of the function hotelling.test is given
+T2.sparrows
+```
+
+The alternative R-function for the $T^2$ test is provided by the function `Hotelling.mat` in the `smsets` package. The syntax of the function is
+
+```{r, eval = FALSE}
+Hotelling.mat(x, group, level1)
+```
+
+where `x` is a data frame with _p_ + 1 columns, being _p_ of them numeric response variables, and the remaining column, `group`, is a two-factor variable, written without quotes. Finally, `level1` is a character string specifying the first level of interest in `group`. In addition to Hotelling's test statistics, the `long = TRUE` option in the `print` method outputs the mean vectors and matrices involved in the calculation of the $T²$ statistic. 
+
+```{r, evalu = TRUE, comment = ""}
+# Hotelling's T2 test. Comparing multivariate means between survivor and 
+# nonsurvivor sparrows using function Hotelling.mat
+results.T2 <- Hotelling.mat(sparrows, group = Survivorship, level1 = "S")
+# Long output
+print(results.T2, long = TRUE)
+```
+
+# Comparison of Variation for Two Samples
+
+## Comparison of Variation for Two Samples: The Single-Variable Case
+
+### _F_-test and Levene's test
+
+The _F_-test applied to compare variances in total length for survivor and nonsurvivor sparrows is included here but as indicated in section 4.5, this test should never be used to compare variances, because it is very sensitive to the assumption of normality.
+
+```{r, eval = TRUE, comment = ""}
+# F-test for Total length (not recommended)
+with(sparrows, var.test(Total_length[Survivorship == "S"],
+                        Total_length[Survivorship == "NS"]))
+```
+
+The robust two-sample Levene’s test can be alternatively run, using `leveneTest` function from the `car` package [@Fox2019], to compare again the variation in total length for survivor and nonsurvivor sparrows.
+
+```{r, eval = TRUE, comment = ""}
+library(car)
+leveneTest(Total_length ~ Survivorship, data = sparrows)
+```
+
+Notice that `leveneTest` produces an F statistic, instead of a _t_ statistic, but the degrees of freedom for `Survivorship` (the factor defining groups) is equal to 1 thus, the relation $F = t^2$ holds. Thus, for the analysis of the variation for the sparrows data in Section 4.6.1 of MSMAP5, $t = -1.20$, then $t^2 = 1.464$. This is not too far from the _F_ value = $1.447$ produced by R (the difference due to rounding errors). Notice that `leveneTest` produces a two-sided test. The alternative hypothesis that we are interested in is that the variance for survivors is smaller than the variance for nonsurvivors. This is a lower-tail test thus, the _p_-value shown in the Levene’s test output, $0.235$, must be halved:
+
+```{r, eval = TRUE, comment = ""}
+p.value.lower <- 0.235 / 2
+p.value.lower
+```
+
+Similar code can be written to compare the variation between survivor and nonsurvivor sparrows for the remaining variables.
+
+### Simultaneous (Multiple) Univariate Tests on Several variables
+
+Similarly to `ttests2s.mv`, the `Levenetests2s.mv` function in the `smsets` package extends two-sample Levene's tests based on the _t_-statistic to produce all *p* univariate Levene's tests (one-sided alternatives included). Comparisons of variation between survivors and nonsurvivors for all variables, one at a time, are shown below using Benjamini & Hochberg (1995) correction (indicated here as `fdr` or "false discovery rate" correction), and considering lower-tailed alternatives in all cases, as described in Section 4.6.1 of MSMAP5. Effect sizes are also computed.
+
+```{r, eval = TRUE, comment = ""}
+fdr.Levene2s.mv <- Levenetests2s.mv(sparrows, Survivorship, "S",
+                                alternative = "less", var.equal = TRUE,
+                                P.adjust = "fdr", unit = "mm")
+fdr.Levene2s.mv
+```
+
+Looking at the p-values obtained with the "false discovery rate" adjustment, it is seen that the variation between survivors and nonsurvivors is non-significant for none of the five morphological variables, which contrasts with the simultaneous uncorrected Levene's tests reported in Section 4.6.1 of MSMAP5. This latter set of tests are shown below (the `P.adjust` argument in `Levenetests2s.mv` has been omitted):
+
+```{r, eval = TRUE, comment = ""}
+none.Levene2s.mv <- Levenetests2s.mv(sparrows, Survivorship, "S",
+                                alternative = "less", var.equal = TRUE, unit = "mm")
+none.Levene2s.mv
+```
+
+As described in Section 4.6.1 of MSMAP5, "only for the length of the humerus is the result significantly low at 5% level". However, it is recommended here to rely on tests based on adjustments like fdr. Therefore, it is more appropriate to conclude that, on the basis on multiple univariate one-sided Levene's tests, apparently the five morphological variables for survivor sparrows do not vary less than those for nonsurvivors.
+
+More suitable approaches can be considered for testing variation from a multivariate point of view. Two methods of this sort are described in the next section.
+
+# Comparison of Variation for Two Samples: The Multivariate Case
+
+## Two-sample Levene’s test based on Hotelling’s $T^2$ for the comparison of multivariate variation
+
+The idea behind the multivariate version of the two-sample Levene's test is to compare the mean vectors of absolute deviations from medians or MADs for all variables. More precisely, the variation between the two samples are measured in terms of two sample MADs for all variables and, then, the mean MADs vectors are compared using Hotelling’s $T^2$ test.
+
+The following code implements function `LeveneT2` included in the `smsets` package to produce a Levene’s test based on Hotelling’s $T^2$ for the comparison of multivariate variation between survivors and nonsurvivors in the Bumpus’ sparrows data. 
+
+```{r, eval = TRUE, comment = ""}
+# Levene's test based on Hotelling's T2
+LeveneT2.sparrows <- LeveneT2(sparrows, group = Survivorship, level1 = "S",
+                              var.equal = TRUE)
+LeveneT2.sparrows
+```
+
+If a long output is desired (e.g., a display of sub-data frames containing the absolute deviations around medians), `long = TRUE` can be added as an option to the `print` method:
+
+```{r, eval = FALSE, comment = ""}
+print(LeveneT2.sparrows, long = TRUE)
+```
+
+## Van Valen’s test
+
+Details about the test of multivariate variation for two samples suggested by van Valen -@vanValen1978 are found in Section 4.6 of MSMAP5. The test assumes that the level of variation is consistent for all variables, as the test statistic is reduced to a single variation measure (the deviation around medians for all standardized variables), denoted as _d_. As a consequence, the comparison of multivariate variation is carried out using a simple two-sample _t_-test of means for the single variable _d_ . The function `VanValen` in the `smsets` package facilitates the calculations involved in van Valen’s test. The code for the comparison of multivariate variation between survivor and nonsurvivor sparrows follows, assuming that one is interested to test that the five morphological features for survivors are less variable than the corresponding features for nonsurvivors. The `print` method in this example includes the option `long = TRUE`, indicating that a detailed output is wanted, including by-group matrices of standardized variables, standardized medians, absolute deviations from sample medians for each group, and by-group _d_-values used in Van Valen’s test.
+
+```{r, eval = TRUE, comment = ""}
+# Van Valen's test. A t-test based on absolute differences around medians from 
+# standardized data
+res.VanValen <- VanValen(sparrows, group = "Survivorship", level1 = "S", 
+                         alternative = "less", var.equal = TRUE)
+print(res.VanValen, long = TRUE)
+```
+
+# Comparison of Means for Several Samples
+
+## The Single-Variable Case: One-factor ANOVA
+
+The comparison of several samples (classified by a single factor) for a single variable is customarily performed using one-factor or one-way ANOVA, a procedure focused on testing the hypothesis that all samples came from populations with the same mean. The code below gives the one-factor analysis of variance for maximum breadth of Egyptian skulls, applied to the comparison of periods (`Period` is the single factor here); see Section 4.8.1 of MSMAP5 for more details. The analysis of variance table is obtained using the `summary` method of `aov`, the basic function in the `stats` package useful to fit an analysis of variance model.
+
+```{r, eval = TRUE, comment = ""}
+# One-factor ANOVA tests: comparing univariate means
+# Variable: Maximum_breadth
+library("smsets")
+skulls.aovMB <- aov(Maximum_breadth ~ Period, data = skulls)
+summary(skulls.aovMB)
+```
+
+Similar code can be written to perform ANOVAs for the other three morphological variables.
+
+## The Multivariate Case: One-factor MANOVA
+
+For the case of several variables and one single factor determining two or more samples, the procedure called "One-Factor Multivariate Analysis of Variance or One-factor/One-way MANOVA was described in Section 4.7. Four statistics were defined to test the hypothesis that all samples came from populations with the same mean vector: _Wilks' lambda_, _Roy's largest root_, _Pillai's trace_ and _Lawley-Hotelling trace_. The calculation of these statistics in R are made by the `manova` function, an extension of the `aov` function with the capacity of handling matrix operations involved in the MANOVA. The `summary` method for `manova` determines the particular test given as output, being Pillai's trace the default test statistic.
+
+The `manova` and `summary` functions applied to the comparison of samples of Egyptian skulls using Wilks’ lambda is:
+
+```{r, eval = TRUE, comment = ""}
+# One-factor MANOVA: comparing multivariate means
+skulls.mnv <- manova(as.matrix(skulls[, -1]) ~ Period, data = skulls)
+# Approximate F-test after the one-factor MANOVA
+summary(skulls.mnv, test="Wilks")
+```
+
+The `smsets` package implements the convenience function `MANOVA.mat` which optionally displays extra information to the tests offered by the `manova` function. The following chunk of code tests the difference between periods for the skulls data with respect to their multivariate means based on Pillai's trace, by calling `MANOVA.mat` function. The `print` method of the object produced by this function, indicates that a long output is wanted.
+
+```{r, eval = TRUE, comment = ""}
+res.MANOVA <- OnewayMANOVA(skulls, group = Period)
+print(res.MANOVA, long = TRUE)
+```
+
+# Comparison of Variation for Several Samples: The Multivariate Case
+
+## Testing the equality of several covariance matrices: Box’s _M_ test
+
+Box's _M_ test was described in Section 4.8 of MSMAP5 as one of the best multivariate method known for comparing the variation in several samples. Box’s _M_ test applied to the Egyptian skulls data, using function `boxM` from package `biotools` [@daSilva2025; @daSilva2017] is shown below. This function produces an approximate chi-square statistic for _M_.
+
+```{r, eval = TRUE, comment = ""}
+library(biotools)
+groups <- skulls[, 1] # The grouping variable is located in the 1st column 
+vars <- skulls[, -1]  # The y-variables are not located in the 1st column
+# Producing the chi-square test of homogeneity of variance-covariance matrices
+chitest.boxM <- boxM(vars, groups)
+chitest.boxM
+```
+
+Alternatively, function `BoxM.F` in the `smsets` package can be accessed to perform again Box’s _M_ test but now following the procedure described in Section 4.8 (an _F_ approximation). Covariance matrices are also shown, as a result of the option `long = TRUE` added to the `print` method of `BoxM.F`.
+
+```{r, eval = TRUE, comment = ""}
+resBoxM.F <- BoxM.F(skulls, Period)
+print(resBoxM.F, long = TRUE)
+```
+
+Differences between the _p_-values for the two approximations, chi square and _F_, are negligible.
+
+# Extra function: Penrose.dist
+
+`Penrose.dist` in the `smsets` package returns Penrose's -@Penrose1953 distances between _m_ multivariate populations, when information is available on the means, variances, and covariances of the populations. This function is described in Chapter 5 of MSMAP5.
+
+Let the mean of $X_k$ in population *i* be $\mu_{ki}$, $k=1,..., p$; $i=1,...,m$, and assume that the variance of $X_k$ is $V_k$ in all the populations. The Penrose (1953) distance $P_{ij}$ between population *i* and population *j* is given by
+
+
+$$P_{ij} = \sum_{k = 1}^{p}\frac{(\mu_{ki} - \mu_{kj})^2}{p \cdot V_k}$$
+
+A disadvantage of Penrose's measure is that it does not consider the correlations between the *p* variables.
+
+Penrose's distances between Periods for the skulls data are displayed below, along with sample sizes, the mean vector for each `Period`, the covariance matrix for each `Period`, and the pooled covariance matrix.
+
+```{r, eval = TRUE, comment = ""}
+res.Penrose <- Penrose.dist(x = skulls, group = Period)
+# Long output
+print(res.Penrose, long = TRUE)
+```
+
+# References {-}
+
+

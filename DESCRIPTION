@@ -17,6 +17,10 @@ Depends:
     R (>= 3.6)
 LazyData: true
 Imports: stringr, data.table, Hotelling, biotools
-Suggests: 
-    testthat (>= 3.0.0)
+Suggests:
+    car,
+    knitr,
+    rmarkdown,
+    testthat (>= 3.0.0),
 Config/testthat/edition: 3
+VignetteBuilder: knitr
