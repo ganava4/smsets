@@ -1,7 +1,7 @@
 Package: smsets
-Date: 2024-12-23
+Date: 2025-04-21
 Title: Simple Multivariate Statistical Estimation and Tests
-Version: 0.1.0
+Version: 1.0.0
 Authors@R: 
     person(given = "Jorge",
            family = "Navarro Alberto",
