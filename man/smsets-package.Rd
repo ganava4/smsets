@@ -20,6 +20,14 @@ calculator is also implemented.
 Manly, B.F.J., Navarro Alberto, J.A. and Gerow, K. (2024)
 \emph{Multivariate Statistical Methods. A Primer}. 5th Edn. CRC Press.
 }
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://github.com/ganava4/smsets}
+  \item Report bugs at \url{https://github.com/ganava4/smsets/issues}
+}
+
+}
 \author{
 \strong{Maintainer}: Jorge Navarro Alberto \email{ganava4@gmail.com} (\href{https://orcid.org/0000-0002-5027-6908}{ORCID})
 
