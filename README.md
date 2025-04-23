@@ -2,7 +2,7 @@
 
 ## Description
 
-The goal of `smstests` is to produce simple multivariate statistical tests and parameter estimation for means and variances / covariances when one single factor with two or more levels are involved. Analyses include:
+The goal of `smsets` is to produce simple multivariate statistical tests and parameter estimation for means and variances / covariances when one single factor with two or more levels are involved. Analyses include:
 
 * Multiple two-sample t-tests for means.
 * Multiple two-sample Levene's tests for variances.
