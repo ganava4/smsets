@@ -1,5 +1,7 @@
 # smsets
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 ## Description
 
 The goal of `smsets` is to produce simple multivariate statistical tests and parameter estimation for means and variances / covariances when one single factor with two or more levels are involved. Analyses include:
