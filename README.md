@@ -18,7 +18,7 @@ The goal of `smstests` is to produce simple multivariate statistical tests and p
 You can install the development version of `smsets` from [GitHub](https://github.com) with:
 
 ```{r}
-devtools::install_github("ganava4/smstests")
+devtools::install_github("ganava4/smsets")
 ```
 
 Afterwards, just load it and it will be ready to use.
