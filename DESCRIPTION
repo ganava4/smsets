@@ -5,7 +5,7 @@ Version: 1.0.0
 Authors@R: 
     person(given = "Jorge",
            family = "Navarro Alberto",
-           role = c("aut", "cre"),
+           role = c("aut", "cre", "cph"),
            email = "ganava4@gmail.com", 
            comment = c(ORCID = "0000-0002-5027-6908"))
 Description: A collection of simple parameter estimation and tests for the comparison of multivariate means and variation, covered in Chapters 4 and 5 of the book Multivariate Statistical Methods. A Primer. 5th edition.
