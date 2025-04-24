@@ -29,7 +29,7 @@ Useful links:
 
 }
 \author{
-\strong{Maintainer}: Jorge Navarro Alberto \email{ganava4@gmail.com} (\href{https://orcid.org/0000-0002-5027-6908}{ORCID})
+\strong{Maintainer}: Jorge Navarro Alberto \email{ganava4@gmail.com} (\href{https://orcid.org/0000-0002-5027-6908}{ORCID}) [copyright holder]
 
 }
 \keyword{internal}
