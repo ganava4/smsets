@@ -6,8 +6,8 @@
 #' \emph{Multivariate Statistical Methods. A Primer}. 5th Edn. CRC Press.
 #'
 #' @description
-#' An R function which implements Hotelling's \eqn{T^2} test, with extra
-#' information.
+#' An R function which implements Hotelling's \eqn{T^2} test assuming equal
+#' covariance matrices, with extra information.
 #'
 #' @param x a data frame with one two-level factor and \emph{p} response
 #' variables.
@@ -19,9 +19,10 @@
 #' @details
 #' This function is a simplified version of the function
 #' \code{\link[Hotelling]{hotelling.test}} implemented in the \code{Hotelling}
-#' package for the comparison of mean values of two multivariate samples.
-#' However, the \code{summary} methods in \code{Hotelling.mat} gives more
-#' detailed information of the calculations behind the \eqn{T^2} test.
+#' package for the comparison of mean values of two multivariate samples, under
+#' the assumption that covariance matrices are equal. The \code{summary} methods
+#' in \code{Hotelling.mat} gives more detailed information of the calculations
+#' behind the \eqn{T^2} test.
 #'
 #' @return Returns an object of class \code{"Hotelling.mat"}, a list containing
 #' the following components:

@@ -37,15 +37,16 @@ factor \code{group}. \tab   \cr
 }
 }
 \description{
-An R function which implements Hotelling's \eqn{T^2} test, with extra
-information.
+An R function which implements Hotelling's \eqn{T^2} test assuming equal
+covariance matrices, with extra information.
 }
 \details{
 This function is a simplified version of the function
 \code{\link[Hotelling]{hotelling.test}} implemented in the \code{Hotelling}
-package for the comparison of mean values of two multivariate samples.
-However, the \code{summary} methods in \code{Hotelling.mat} gives more
-detailed information of the calculations behind the \eqn{T^2} test.
+package for the comparison of mean values of two multivariate samples, under
+the assumption that covariance matrices are equal. The \code{summary} methods
+in \code{Hotelling.mat} gives more detailed information of the calculations
+behind the \eqn{T^2} test.
 }
 \examples{
 data(sparrows)

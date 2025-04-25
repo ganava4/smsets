@@ -8,6 +8,32 @@
 #' (\code{TRUE}) or not (\code{FALSE}, the default)
 #' @param ... further arguments passed to or from other methods.
 #'
+#' @returns
+#' Displays the results of the comparison of mean values of two multivariate
+#' samples, under the assumption that covariance matrices are equal, using
+#' Hotelling's T² test. The argument `x`, invisibly, as for all print methods,
+#' is a list of class "\code{Hotelling.mat}". This `print` method provides two
+#' sorts of output depending on whether the `long` argument is `TRUE` or `FALSE`
+#' (the default). The "short" output displays:
+#' \itemize{
+#'   \item A description of the analysis.
+#'   \item The data frame analyzed.
+#'   \item The labels of the two-level group factor (samples), with an order
+#'   determined by the user in the `Hotelling.mat` argument `level1`.
+#'   \item The value of Hotelling's \eqn{T²}-statistic.
+#'   \item The value of the \emph{F}-statistic with its corresponding degrees of
+#'       freedom for numerator and denominator.
+#'   \item The P-value.
+#'  }
+#'
+#' In addition to this summary, the "long" output shows:
+#'
+#'  \itemize{
+#'   \item The mean vectors and covariance matrices for each sample.
+#'   \item The pooled covariance matrix.
+#'   \item The inverse of the covariance matrix.
+#'  }
+#'
 #' @examples
 #' data(sparrows)
 #' results.T2 <- Hotelling.mat(sparrows, group = Survivorship, level1 = "S")
@@ -18,6 +44,7 @@
 print.Hotelling.mat <- function(x, long = FALSE, ...) {
   stopifnot(inherits(x, "Hotelling.mat"))
   cat(" Hotelling's T2 test for the comparison of two multivariate samples\n")
+  cat(" (Assuming equal covariance matrices)\n")
   #
   cat(" Data:  ", x$data.name, "\n")
   cat(" Group levels: (1)", x$levels.group[1], ";  (2)", x$levels.group[2],

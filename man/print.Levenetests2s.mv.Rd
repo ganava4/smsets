@@ -25,8 +25,8 @@ display of particular elements in \code{x}:
 \item The data frame analyzed.
 \item The labels of the two-level group factor (samples), with an order
 determined by the user in the \code{Levenetests2s.mv} argument \code{level1}.
-\item The \emph{t}-based Levene's test for each response variable; these
-include:
+\item The \emph{t}-based Levene's test results for each response variable;
+these include:
 \itemize{
 \item The variable name.
 \item Sample medians classified by group levels.

@@ -14,6 +14,32 @@
 
 \item{...}{further arguments passed to or from other methods.}
 }
+\value{
+Displays the results of the comparison of mean values of two multivariate
+samples, under the assumption that covariance matrices are equal, using
+Hotelling's T² test. The argument \code{x}, invisibly, as for all print methods,
+is a list of class "\code{Hotelling.mat}". This \code{print} method provides two
+sorts of output depending on whether the \code{long} argument is either \code{TRUE} or
+\code{FALSE} (the default). The "short" output displays:
+\itemize{
+\item A description of the analysis.
+\item The data frame analyzed.
+\item The labels of the two-level group factor (samples), with an order
+determined by the user in the \code{Hotelling.mat} argument \code{level1}.
+\item The value of Hotelling's \eqn{T²}-statistic.
+\item The value of the \emph{F}-statistic with its corresponding degrees of
+freedom for numerator and denominator.
+\item The P-value.
+}
+
+In addition to this summary, the "long" output shows:
+
+\itemize{
+\item The mean vectors and covariance matrices for each group.
+\item The pooled covariance matrix.
+\item The inverse of the covariance matrix.
+}
+}
 \description{
 Prints the results produced by the \code{\link[smsets]{Hotelling.mat}}
 function
