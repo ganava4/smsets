@@ -19,7 +19,7 @@ response vector with (optionally) corrected significance levels. The argument
 "\code{ttests2s.mv}". This \code{print} method provides a user-friendly display
 of particular elements in \code{x}:
 \itemize{
-\item Name of the analysis.
+\item A description of the analysis.
 \item The data frame analyzed.
 \item The labels of the two-level group factor (samples), with an order
 determined by the user in the \code{ttests2s.mv} argument \code{level1}.

@@ -8,15 +8,47 @@ multivariate data}
 \method{print}{Levenetests2s.mv}(x, ...)
 }
 \arguments{
-\item{x}{an object of class "Levene.t"}
+\item{x}{an object of class "Levenetests2s.mv"}
 
 \item{...}{further arguments passed to or from other methods.}
+}
+\value{
+{
+An annotated output of two-sample Levene's tests computed from two-sample
+t-tests applied to absolute differences around medians for more than one
+response vector, with (optionally) corrected significance levels. The
+argument \code{x}, invisibly, as for all print methods, is a list of class
+"\code{Levenetests2s.mv}". This \code{print} method provides a user-friendly
+display of particular elements in \code{x}:
+\itemize{
+\item A description of the analysis.
+\item The data frame analyzed.
+\item The labels of the two-level group factor (samples), with an order
+determined by the user in the \code{Levenetests2s.mv} argument \code{level1}.
+\item The \emph{t}-based Levene's test for each response variable; these
+include:
+\itemize{
+\item The variable name.
+\item Sample medians classified by group levels.
+\item Means and variances of sample absolute deviations from the median
+classified by group levels.
+\item The value of the \emph{t}-statistic, the degrees of freedom and
+the \emph{p}-value.
+\item Effect sizes: raw and Hedge's (1981). The units of raw effect
+sizes are shown according to the argument \verb{unit =} in
+\code{Levenetests2s.mv}.
+}
+\item The type of alternative hypothesis for all tests.
+\item The method of significance level adjustment for multiple comparisons
+used.
+}
+}
 }
 \description{
 Prints the results produced by \code{\link[smsets]{Levenetests2s.mv}},
 consisting of two-sample Levene's tests computed from two-sample t-tests
 applied to absolute differences around medians for more than one response
-vector
+vector.
 }
 \details{
 Summarize
@@ -28,4 +60,8 @@ res.Levene2s.mv <- Levenetests2s.mv(sparrows, Survivorship, "S",
                                P.adjust = "bonferroni", unit = "mm")
 print(res.Levene2s.mv)
 
+}
+\references{
+Hedges, L. V. 1981. Distribution theory for Glass’s estimator of effect size
+and related estimators. \emph{Journal of Educational Statistics} 6(2): 107–128.
 }

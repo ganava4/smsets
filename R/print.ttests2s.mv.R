@@ -15,7 +15,7 @@
 #' "\code{ttests2s.mv}". This `print` method provides a user-friendly display
 #' of particular elements in `x`:
 #' \itemize{
-#'   \item Name of the analysis.
+#'   \item A description of the analysis.
 #'   \item The data frame analyzed.
 #'   \item The labels of the two-level group factor (samples), with an order
 #'   determined by the user in the `ttests2s.mv` argument `level1`.
@@ -34,7 +34,7 @@
 #'   }
 #' }
 #'
-#' @reference
+#' @references
 #' Hedges, L. V. 1981. Distribution theory for Glass’s estimator of effect size
 #' and related estimators. _Journal of Educational Statistics_ 6(2): 107–128.
 #'
