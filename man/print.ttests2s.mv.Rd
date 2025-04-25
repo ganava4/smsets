@@ -7,13 +7,40 @@
 \method{print}{ttests2s.mv}(x, ...)
 }
 \arguments{
-\item{x}{an object of class \code{"ttests"}}
+\item{x}{an object of class \code{"ttests2s.mv"}}
 
 \item{...}{further arguments passed to or from other methods.}
 }
+\value{
+{
+An annotated output of multiple two-sample \emph{t}-tests on more than one
+response vector with (optionally) corrected significance levels. The argument
+\code{x}, invisibly, as for all print methods, is a list of class
+"\code{ttests2s.mv}". This \code{print} method provides a user-friendly display
+of particular elements in \code{x}:
+\itemize{
+\item Name of the analysis.
+\item The data frame analyzed.
+\item The labels of the two-level group factor (samples), with an order
+determined by the user in the \code{ttests2s.mv} argument \code{level1}.
+\item The \emph{t}-test results for each response variable; these include:
+\itemize{
+\item The variable name.
+\item Sample means and variances classified by group levels.
+\item The value of the \emph{t}-statistic, the degrees of freedom and
+the \emph{p}-value.
+\item Effect sizes: raw and Hedge's (1981). The units of raw effect
+sizes are shown according to the argument \verb{unit =} in \code{ttests2s.mv}.
+}
+\item The type of alternative hypothesis for all tests.
+\item The method of significance level adjustment for multiple comparisons
+used.
+}
+}
+}
 \description{
 Prints the results produced by \code{\link[smsets]{ttests2s.mv}}, consisting
-of two-sample t-tests on more than one response vector with corrected
+of two-sample \emph{t}-tests on more than one response vector with corrected
 significance levels for multiple comparisons, as offered by \code{p.adjust}.
 Effects sizes are also displayed.
 }
@@ -24,4 +51,8 @@ ttests.sparrows <- ttests2s.mv(sparrows, group = Survivorship, level1 = "S",
                               unit = "mm")
 print(ttests.sparrows)
 
+}
+\references{
+Hedges, L. V. 1981. Distribution theory for Glass’s estimator of effect size
+and related estimators. \emph{Journal of Educational Statistics} 6(2): 107–128.
 }
