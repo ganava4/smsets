@@ -6,7 +6,7 @@
 \alias{smsets-package}
 \title{smsets}
 \description{
-A collection of simple parameter estimation and tests for the comparison of multivariate means and variation, to accompany Chapters 4 and 5 of the book Multivariate Statistical Methods. A Primer (5th edition), by Manly BFJ, Navarro Alberto JA & Gerow K (2024) \doi{https://doi.org/10.1201/9781003453482}
+A collection of simple parameter estimation and tests for the comparison of multivariate means and variation, to accompany Chapters 4 and 5 of the book Multivariate Statistical Methods. A Primer (5th edition), by Manly BFJ, Navarro Alberto JA & Gerow K (2024) \doi{https://doi.org/10.1201/9781003453482}.
 }
 \details{
 The goal of smsets is to produce simple multivariate statistical tests for
