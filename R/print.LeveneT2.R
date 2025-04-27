@@ -2,11 +2,11 @@
 #'
 #' Prints the results produced by \code{\link[smsets]{LeveneT2}}, consisting of
 #' a Levene's test for two multivariate samples based on Hotelling's \eqn{T^2}
-#' test
+#' test.
 #'
-#' @param x an object of class \code{"LeveneT2"}
+#' @param x an object of class \code{"LeveneT2"}.
 #' @param long a logical variable indicating whether a long output is desired
-#' (\code{TRUE}) or not (\code{FALSE}, the default)
+#' (\code{TRUE}) or not (\code{FALSE}, the default).
 #' @param ... further arguments passed to or from other methods.
 #'
 #' @returns
@@ -20,11 +20,9 @@
 #' \itemize{
 #'   \item A description of the analysis.
 #'   \item The data frame analyzed.
-#'   \item The names of response variables
+#'   \item The names of responses in the data frame.
 #'   \item The labels of the two-level group factor (samples), with an order
-#'   determined by the user in the `LeveneT2` argument `level1`.
-#'   \item If unequal remark assumption, stating that the
-#'   F-statistic approximation
+#'   determined by the argument `level1` in `LeveneT2`.
 #'   \item The value of Hotelling's \eqn{T²}-statistic.
 #'   \item The value of the \emph{F}-statistic with its corresponding degrees of
 #'       freedom for numerator and denominator. When the within-sample
@@ -38,10 +36,10 @@
 #'
 #' In addition to the above information, the "long" output lists:
 #' \itemize{
-#'    \item sub-data frames containing the original responses and medians,
-#'    separately for each sample
-#'    \item the absolute deviations from sample medians for samples 1 and 2
-#'    \item the vector of mean absolute deviations around medians for samples 1
+#'    \item Sub-data frames containing the original responses and medians,
+#'    separately for each sample.
+#'    \item The absolute deviations from sample medians for samples 1 and 2.
+#'    \item Vectors of mean absolute deviations around medians for samples 1
 #'    and 2, used in Hotelling's \eqn{T²} test.
 #' }
 #'
