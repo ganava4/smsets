@@ -14,7 +14,8 @@
 #' https://doi.org/10.4238/gmr16029655.
 #'
 #' Manly, B.F.J., Navarro Alberto, J.A. and Gerow, K. (2024)
-#' \emph{Multivariate Statistical Methods. A Primer}. 5th Edn. CRC Press.
+#' \emph{Multivariate Statistical Methods. A Primer}. 5th Edn.
+#' Chapman and Hall/CRC.
 #'
 #' Penrose, L.W. (1953). Distance, size and shape. \emph{Annals of Eugenics} 18:
 #' 337-43.

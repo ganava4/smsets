@@ -5,7 +5,8 @@
 #'
 #' @references
 #' Manly, B.F.J., Navarro Alberto, J.A. and Gerow, K. (2024)
-#' \emph{Multivariate Statistical Methods. A Primer}. 5th Edn. CRC Press.
+#' \emph{Multivariate Statistical Methods. A Primer}. 5th Edn.
+#' Chapman and Hall/CRC.
 #'
 #' Hedges, L. V. 1981. Distribution theory for Glass’s estimator of effect size
 #' and related estimators. _Journal of Educational Statistics_ 6(2): 107–128.

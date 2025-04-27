@@ -1,13 +1,57 @@
 #' Prints Levene's test based on Hotelling's \eqn{T^2} test
 #'
 #' Prints the results produced by \code{\link[smsets]{LeveneT2}}, consisting of
-#' Levene's test for two multivariate samples based on Hotelling's \eqn{T^2}
+#' a Levene's test for two multivariate samples based on Hotelling's \eqn{T^2}
 #' test
 #'
 #' @param x an object of class \code{"LeveneT2"}
 #' @param long a logical variable indicating whether a long output is desired
 #' (\code{TRUE}) or not (\code{FALSE}, the default)
 #' @param ... further arguments passed to or from other methods.
+#'
+#' @returns
+#' Displays the results of the comparison of multivariate variation in two
+#' samples in which data values are transformed into absolute deviations from
+#' their respective sample medians, and mean vectors of absolute deviations are
+#' compared using Hotelling's \eqn{T^2} test. The argument `x`, invisibly, as
+#' for all print methods, is a list of class "\code{LeveneT2}". This `print`
+#' method provides two sorts of output depending on whether the `long` argument
+#' is `TRUE` or `FALSE` (the default). The "short" output displays:
+#' \itemize{
+#'   \item A description of the analysis.
+#'   \item The data frame analyzed.
+#'   \item The names of response variables
+#'   \item The labels of the two-level group factor (samples), with an order
+#'   determined by the user in the `LeveneT2` argument `level1`.
+#'   \item If unequal remark assumption, stating that the
+#'   F-statistic approximation
+#'   \item The value of Hotelling's \eqn{T²}-statistic.
+#'   \item The value of the \emph{F}-statistic with its corresponding degrees of
+#'       freedom for numerator and denominator. When the within-sample
+#'       covariance matrices of absolute deviations around medians are not
+#'       assumed equal (`var.equal = FALSE`), these degrees of freedom are
+#'       approximated using the Nel and van der Merwe's (1986) solution to the
+#'       multivariate Behrens-Fisher problem, as implemented in \pkg{Hotelling}
+#'       package (Curran and Hersh, 2021).
+#'   \item The P-value.
+#'  }
+#'
+#' In addition to the above information, the "long" output lists:
+#' \itemize{
+#'    \item sub-data frames containing the original responses and medians,
+#'    separately for each sample
+#'    \item the absolute deviations from sample medians for samples 1 and 2
+#'    \item the vector of mean absolute deviations around medians for samples 1
+#'    and 2, used in Hotelling's \eqn{T²} test.
+#' }
+#'
+#' @references Curran, J. and Hersh, T. (2021). \emph{Hotelling: Hotelling's T^2
+#' Test and Variants}. R package version 1.0-8,
+#' <https://CRAN.R-project.org/package=Hotelling>.
+#'
+#' Nel, D.G. and van de Merwe, C.A. (1986). A solution to the multivariate
+#' Behrens-Fisher problem. \emph{Comm. Statist. Theor. Meth.}, A15, 12,
+#' 3719-3736.
 #'
 #' @examples
 #' data(sparrows)

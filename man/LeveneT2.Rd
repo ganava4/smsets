@@ -98,7 +98,8 @@ Test and Variants}. R package version 1.0-8,
 \url{https://CRAN.R-project.org/package=Hotelling}.
 
 Manly, B.F.J., Navarro Alberto, J.A. and Gerow, K. (2024)
-\emph{Multivariate Statistical Methods. A Primer}. 5th Edn. CRC Press.
+\emph{Multivariate Statistical Methods. A Primer}. 5th Edn.
+Chapman and Hall/CRC.
 
 Nel, D.G. and van de Merwe, C.A. (1986). A solution to the multivariate
 Behrens-Fisher problem. \emph{Comm. Statist. Theor. Meth.}, A15, 12,

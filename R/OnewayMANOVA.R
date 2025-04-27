@@ -3,7 +3,8 @@
 #' @author Jorge Navarro Alberto, \email{ganava4@@gmail.com}
 #'
 #' @references Manly, B.F.J., Navarro Alberto, J.A. and Gerow, K. (2024)
-#' \emph{Multivariate Statistical Methods. A Primer}. 5th Edn. CRC Press.
+#' \emph{Multivariate Statistical Methods. A Primer}. 5th Edn.
+#' Chapman and Hall/CRC.
 #'
 #' @description
 #' An R function to test the difference of mean vectors among the levels of a

@@ -19,8 +19,8 @@ Displays the results of the comparison of mean values of two multivariate
 samples, under the assumption that covariance matrices are equal, using
 Hotelling's T² test. The argument \code{x}, invisibly, as for all print methods,
 is a list of class "\code{Hotelling.mat}". This \code{print} method provides two
-sorts of output depending on whether the \code{long} argument is either \code{TRUE} or
-\code{FALSE} (the default). The "short" output displays:
+sorts of output depending on whether the \code{long} argument is \code{TRUE} or \code{FALSE}
+(the default). The "short" output displays:
 \itemize{
 \item A description of the analysis.
 \item The data frame analyzed.
@@ -35,7 +35,7 @@ freedom for numerator and denominator.
 In addition to this summary, the "long" output shows:
 
 \itemize{
-\item The mean vectors and covariance matrices for each group.
+\item The mean vectors and covariance matrices for each sample.
 \item The pooled covariance matrix.
 \item The inverse of the covariance matrix.
 }
