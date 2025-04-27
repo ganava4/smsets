@@ -31,9 +31,9 @@
 #'
 #' @details
 #' Let the mean of \eqn{X_k} in population \emph{i} be \eqn{\mu_{ki}},
-#' \eqn{k=1,...,p; i=1,...,m} and assume that the variance of \eqn{X_k} is
-#' \eqn{V_k} in all the populations. The Penrose (1953) distance \eqn{P_{ij}}
-#' between population \emph{i} and population \emph{j} is given by
+#' \eqn{k=1,...,p; i=1,...,m} and assume that the variance of variable \eqn{X_k}
+#' is \eqn{V_k}. The Penrose (1953) distance \eqn{P_{ij}} between population
+#' \emph{i} and population \emph{j} is given by
 #'
 #' \deqn{P_{ij} = \sum_{k = 1}^{p} \frac{(\mu_{ki} - \mu_{kj})^2}{pV_k}}
 #'

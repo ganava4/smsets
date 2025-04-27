@@ -7,10 +7,10 @@
 \method{print}{LeveneT2}(x, long = FALSE, ...)
 }
 \arguments{
-\item{x}{an object of class \code{"LeveneT2"}}
+\item{x}{an object of class \code{"LeveneT2"}.}
 
 \item{long}{a logical variable indicating whether a long output is desired
-(\code{TRUE}) or not (\code{FALSE}, the default)}
+(\code{TRUE}) or not (\code{FALSE}, the default).}
 
 \item{...}{further arguments passed to or from other methods.}
 }
@@ -25,11 +25,9 @@ is \code{TRUE} or \code{FALSE} (the default). The "short" output displays:
 \itemize{
 \item A description of the analysis.
 \item The data frame analyzed.
-\item The names of response variables
+\item The names of responses in the data frame.
 \item The labels of the two-level group factor (samples), with an order
-determined by the user in the \code{LeveneT2} argument \code{level1}.
-\item If unequal remark assumption, stating that the
-F-statistic approximation
+determined by the argument \code{level1} in \code{LeveneT2}.
 \item The value of Hotelling's \eqn{T²}-statistic.
 \item The value of the \emph{F}-statistic with its corresponding degrees of
 freedom for numerator and denominator. When the within-sample
@@ -43,17 +41,17 @@ package (Curran and Hersh, 2021).
 
 In addition to the above information, the "long" output lists:
 \itemize{
-\item sub-data frames containing the original responses and medians,
-separately for each sample
-\item the absolute deviations from sample medians for samples 1 and 2
-\item the vector of mean absolute deviations around medians for samples 1
+\item Sub-data frames containing the original responses and medians,
+separately for each sample.
+\item The absolute deviations from sample medians for samples 1 and 2.
+\item Vectors of mean absolute deviations around medians for samples 1
 and 2, used in Hotelling's \eqn{T²} test.
 }
 }
 \description{
 Prints the results produced by \code{\link[smsets]{LeveneT2}}, consisting of
 a Levene's test for two multivariate samples based on Hotelling's \eqn{T^2}
-test
+test.
 }
 \examples{
 data(sparrows)
