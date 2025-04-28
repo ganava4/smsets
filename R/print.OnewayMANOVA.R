@@ -54,11 +54,11 @@ print.OnewayMANOVA <- function(x,
   cat(" Factor:", x$group, "\n")
   cat(" Levels:", x$x.mnv$xlevels[[1]], "\n")
   if (long == TRUE) {
-    cat("\nBetween-Sample Matrix of Sum of Squares and Crossed Products, B\n")
+    cat("\nBetween-Sample Sum of Squares and Crossed Products Matrix, B\n")
     print(x$B)
-    cat("\nWithin Sample Matrix of Total Sum of Squares and Crossed Products, W\n")
+    cat("\nWithin-Sample Total Sum of Squares and Crossed Products Matrix, W\n")
     print(x$W)
-    cat("\nTotal Sample Matrix of Sum of Squares and Crossed Products, T\n")
+    cat("\nTotal Sum of Squares and Crossed Products Matrix, T\n")
     print(x$T)
   }
   cat("\n                      One-Way MANOVA\n")
