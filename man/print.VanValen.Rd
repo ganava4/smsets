@@ -7,17 +7,46 @@
 \method{print}{VanValen}(x, long = FALSE, ...)
 }
 \arguments{
-\item{x}{an object of class VanValen}
+\item{x}{an object of class \code{VanValen}.}
 
 \item{long}{a logical variable indicating whether a long output is desired
 (\code{TRUE}) or not (\code{FALSE}, the default)}
 
 \item{...}{further arguments passed to or from other methods.}
 }
+\value{
+Displays the results of van Valen's test produced by the \code{VanValen}
+function. The argument \code{x}, invisibly, as for all print methods, is a list
+of class "\code{VanValen}". This \code{print} method provides two sorts of
+output depending on whether the \code{long} argument is \code{TRUE} or \code{FALSE} (the
+default). The "short" output displays:
+\itemize{
+\item A two-line heading describing the analysis.
+\item The data frame analyzed.
+\item The variables used for the comparison of samples.
+\item The labels of the two-level group factor (samples), with an order
+determined by the user in the argument \code{level1} of \code{VanValen}.
+\item The value of the \emph{t}-statistic, the degrees of freedom and
+the \emph{p}-value.
+\item The type of alternative hypothesis for the \emph{t}-test.
+}
+
+In addition to the above information, the "long" output lists:
+\itemize{
+\item Sub-data frames containing the standardized data, separately for
+each sample.
+\item The sample medians for the standardized data, samples 1 and 2.
+\item Sub-data frames containing the deviations from sample medians for
+the standardized values, separately for each sample.
+\item Sub-data frames containing the pooled distances (\emph{d}'s), separately
+for each sample. These two samples of \emph{d}-values are compared by a
+\emph{t}-test.
+\item The means and variances for each sample of \emph{d}-values.
+}
+}
 \description{
 Displays the results of van Valen's test produced by the \code{VanValen}
-function and, optionally, the matrices involved in the calculations of van
-Valen's test.
+function and, optionally, the matrices involved in the calculations.
 }
 \examples{
 data(sparrows)

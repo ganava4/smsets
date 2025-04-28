@@ -15,6 +15,29 @@ covariance matrix for each group and the pooled covariance matrix.}
 
 \item{...}{further arguments passed to or from other methods.}
 }
+\value{
+Displays the results of Box's \emph{M} test for homogeneity of covariance
+matrices, based on the F-approximation computed by the \code{BoxM.F}
+function. The argument \code{x}, invisibly, as for all print methods, is a list of
+class "\code{BoxM.F}". This \code{print} method provides two sorts of output
+depending on whether the \code{long} argument is \code{TRUE} or \code{FALSE} (the default).
+The "short" output displays:
+\itemize{
+\item A heading describing the analysis.
+\item The data frame analyzed.
+\item The variables used for the test.
+\item The factor defining the populations or samples and their levels.
+\item The value of the Box's \emph{M} statistic, the corresponding
+approximate \emph{F}-statistic, the degrees of freedom for the numerator and the
+denominator of the \emph{F}-statistic, and the \emph{p}-value.
+}
+
+In addition to the above information, the "long" output lists:
+\itemize{
+\item The covariance matrix for each sample.
+\item The pooled covariance matrix.
+}
+}
 \description{
 Prints the results produced by BoxM.F function, with the option to display
 the matrices involved in the calculations

@@ -27,8 +27,8 @@
 #'
 #' \eqn{n_{j}} is the sample size of the \eqn{j}-th sample,
 #'
-#' \eqn{|\mathbf{C}_j|} is the determinant of the sample covariance matrix
-#' for the \eqn{j}th sample,
+#' \eqn{|\mathbf{C}_j|} is the determinant of the covariance matrix for the
+#' \eqn{j}th sample,
 #'
 #' \eqn{|\mathbf{C}|} is the determinant of the pooled covariance matrix,
 #'
