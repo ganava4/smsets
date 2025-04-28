@@ -11,6 +11,30 @@
 #' (\code{TRUE}) or not (\code{FALSE}, the default)
 #' @param ... further arguments passed to or from other methods.
 #'
+#' @returns
+#' Displays the results of a One-way MANOVA, i.e., the test of the difference of
+#' mean vectors among the levels of a single factor with respect to _p_ response
+#' variables. The argument `x`, invisibly, as for all print methods, is a list
+#' of class "\code{OnewayMANOVA}". This `print` method provides two sorts of
+#' output depending on whether the `long` argument is `TRUE` or `FALSE` (the
+#' default). The "short" output displays:
+#' \itemize{
+#'   \item A heading describing the function.
+#'   \item The data frame analyzed.
+#'   \item The variables involved in the calculation of distances.
+#'   \item The factor defining the populations or samples and their levels.
+#'   \item The one-way MANOVA table specifying the test statistic used in the
+#'   F-approximation, like in `summary.manova`.
+#' }
+#'
+#' In addition to the above information, the "long" output lists:
+#' \itemize{
+#'    \item The Between-Sample Sum of Squares and Crossed Products matrix, B
+#'    \item The Within-Sample Total Sum of Squares and Crossed Products matrix,
+#'    W.
+#'    \item The Total Sample Sum of Squares and Crossed Products matrix, T.
+#' }
+#'
 #' @examples
 #' data(skulls)
 #' res.MANOVA <- OnewayMANOVA(skulls, group = Period)

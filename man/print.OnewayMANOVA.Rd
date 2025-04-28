@@ -23,6 +23,30 @@ matching is used so the name can be abbreviated.}
 
 \item{...}{further arguments passed to or from other methods.}
 }
+\value{
+Displays the results of a One-way MANOVA, i.e., the test of the difference of
+mean vectors among the levels of a single factor with respect to \emph{p} response
+variables. The argument \code{x}, invisibly, as for all print methods, is a list
+of class "\code{OnewayMANOVA}". This \code{print} method provides two sorts of
+output depending on whether the \code{long} argument is \code{TRUE} or \code{FALSE} (the
+default). The "short" output displays:
+\itemize{
+\item A heading describing the function.
+\item The data frame analyzed.
+\item The variables involved in the calculation of distances.
+\item The factor defining the populations or samples and their levels.
+\item The one-way MANOVA table specifying the test statistic used in the
+F-approximation, like in \code{summary.manova}.
+}
+
+In addition to the above information, the "long" output lists:
+\itemize{
+\item The Between-Sample Sum of Squares and Crossed Products matrix, B
+\item The Within-Sample Total Sum of Squares and Crossed Products matrix,
+W.
+\item The Total Sample Sum of Squares and Crossed Products matrix, T.
+}
+}
 \description{
 Prints the results produced by the \code{\link[smsets]{OnewayMANOVA}}
 function
