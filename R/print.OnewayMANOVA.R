@@ -23,8 +23,8 @@
 #'   \item The data frame analyzed.
 #'   \item The variables involved in the calculation of distances.
 #'   \item The factor defining the populations or samples and their levels.
-#'   \item The one-way MANOVA table specifying the test statistic used in the
-#'   F-approximation, like in `summary.manova`.
+#'   \item The One-way MANOVA table specifying the `test` chosen for the
+#'   F-test approximation, like in `summary.manova`.
 #' }
 #'
 #' In addition to the above information, the "long" output lists:
