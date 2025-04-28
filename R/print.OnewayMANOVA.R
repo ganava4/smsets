@@ -56,7 +56,7 @@ print.OnewayMANOVA <- function(x,
   if (long == TRUE) {
     cat("\nBetween-Sample Sum of Squares and Crossed Products Matrix, B\n")
     print(x$B)
-    cat("\nWithin-Sample Total Sum of Squares and Crossed Products Matrix, W\n")
+    cat("\nWithin-Sample Sum of Squares and Crossed Products Matrix, W\n")
     print(x$W)
     cat("\nTotal Sum of Squares and Crossed Products Matrix, T\n")
     print(x$T)
