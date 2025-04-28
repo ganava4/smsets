@@ -12,13 +12,35 @@
 \item{long}{a logical variable indicating whether a long output is desired
 (\code{TRUE}) or not (\code{FALSE}, the default). In addition to Penrose's
 distances, the long output displays the covariance matrix for each group with
-their sample sizes, the mean vector for each group, and the pooled covariance
-matrix.}
+their population / sample sizes, the mean vector for each group, and the
+pooled covariance matrix.}
 
 \item{...}{further arguments passed to or from other methods.}
 }
+\value{
+Displays Penrose's distances between \emph{m} multivariate populations or samples.
+The argument \code{x}, invisibly, as for all print methods, is a list of class
+"\code{Penrose.dist}". This \code{print} method provides two sorts of output
+depending on whether the \code{long} argument is \code{TRUE} or \code{FALSE} (the default).
+The "short" output displays:
+\itemize{
+\item A heading describing the function.
+\item The data frame analyzed.
+\item The variables involved in the calculation of distances.
+\item The factor defining the populations or samples and their levels.
+\item The Penrose distance matrix (lower triangular form).
+}
+In addition to the above information, the "long" output lists:
+\itemize{
+\item The population or sample sizes.
+\item The mean vector for each population / sample.
+\item The covariance matrix for each population / sample
+\item The pooled covariance matrix.
+}
+}
 \description{
-Prints the results produced by Penrose.dist
+Prints the results produced by \code{Penrose.dist}, the Penrose's distance
+calculator.
 }
 \examples{
 data(skulls)

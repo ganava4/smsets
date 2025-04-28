@@ -13,6 +13,10 @@
 #' \emph{Genetics and Molecular Research} 16.
 #' https://doi.org/10.4238/gmr16029655.
 #'
+#' Goslee, S.C. and Urban, D.L. (2007). The ecodist package for
+#' dissimilarity-based analysis of ecological data. \emph{Journal of Statistical
+#' Software} 22(7):1-19. DOI:10.18637/jss.v022.i07
+#'
 #' Manly, B.F.J., Navarro Alberto, J.A. and Gerow, K. (2024)
 #' \emph{Multivariate Statistical Methods. A Primer}. 5th Edn.
 #' Chapman and Hall/CRC.
@@ -21,13 +25,13 @@
 #' 337-43.
 #'
 #' @description
-#' Computes Penrose's distance between \emph{m} multivariate populations, when
-#' information is available on the means and variances of the populations.
+#' Computes Penrose's distance between \emph{m} multivariate populations
+#' or samples, when information is available on the means and variances.
 #'
 #' @param x A data frame with \eqn{p + 1} columns (one factor and \emph{p}
 #' response variables).
 #' @param group The classification factor defining \emph{m} samples or groups.
-#' It must be one of the variables in \code{x}
+#' It must be one of the variables in \code{x}.
 #'
 #' @details
 #' Let the mean of \eqn{X_k} in population \emph{i} be \eqn{\mu_{ki}},
@@ -37,26 +41,34 @@
 #'
 #' \deqn{P_{ij} = \sum_{k = 1}^{p} \frac{(\mu_{ki} - \mu_{kj})^2}{pV_k}}
 #'
+#' Penrose's distances between multivariate samples are computed using this
+#' expression, but \eqn{\mu_{ki}}, \eqn{\mu_{kj}} and \eqn{V_k} being replaced
+#' by their corresponding sample estimates.
+#'
 #' A disadvantage of Penrose's measure is that it does not consider the
 #' correlations between the \emph{p} variables.
 #'
-#' The function requires package \code{biotools} (da Silva, 2017, 2021)
+#' The function requires package \pkg{biotools} (da Silva, 2017, 2021).
 #'
 #' @return Returns an object of class \code{"Penrose.dist"}, a list containing
 #' the following components:
 #' \tabular{llllllllllll}{
 #'    \code{ name} \tab A character string describing the function. \cr
 #'    \code{means.vec} \tab A numeric matrix with \emph{p} rows and \emph{m}
-#'    columns giving the mean of each variable per group \cr
+#'    columns giving the mean of each variable per group. \cr
 #'    \code{covs.list} \tab A list containing the \emph{m} sample covariance
-#'    matrices  \cr
+#'    matrices.  \cr
 #'    \code{Samp.sizes} \tab A table showing the number of observations used in
-#'    the calculation of the covariance matrix for each group  \cr
-#'    \code{PooledCov} \tab The pooled covariance matrix  \cr
+#'    the calculation of the covariance matrix for each group.  \cr
+#'    \code{PooledCov} \tab The pooled covariance matrix. This matrix can be
+#'    accessed and used as an input argument for the calculation of
+#'    Mahalanobis distance in packages \pkg{biotools} (da Silva, 2017, 2021)
+#'    and \pkg{ecodist} (Goslee and Urban 2007).
+#'    \cr
 #'    \code{Penrose.mat} \tab The Penrose distances given as a "\code{matrix}"
-#'    object \cr
+#'    object. \cr
 #'    \code{Penros.dist} \tab The Penrose distances given as a "\code{dist}"
-#'    object \cr
+#'    object. \cr
 #'    \code{group} \tab A character string specifying the name of the
 #'    classification factor defining groups.  \cr
 #'    \code{levels.group} \tab a vector of length \emph{m}, showing the levels
@@ -91,7 +103,7 @@ Penrose.dist <- function(x, group)
   # Creates a list containing the means of each variable, by group
   means.df <- aggregate(df, list(fac), mean)
   # Creates a list: the covariance matrix for all the variables, by group
-  covs.list <- by(df, fac, cov, simplify = FALSE)
+  covs.list <- by(df, fac, var, simplify = FALSE)
   covs.list
   ngroup.list <- table(fac, dnn = group)  # Number of observations per group
   V.pool <- biotools :: boxM(df, fac)$pooled  # Pooled Covariance matrix
@@ -114,15 +126,16 @@ Penrose.dist <- function(x, group)
   means.df <- means.df[levels.group, -1]
   rownames(means.df) <- levels.group
   means.vec <- t(means.df)
+  covs.list1 <- vector(mode = "list", length = m)
   for (i in 1:m) {
-    covs.list[[i]] <- covs.list[[levels.group[i]]]
+    covs.list1[[i]] <- covs.list[[as.character(levels.group[i])]]
   }
-  names(covs.list) <- levels.group
+  names(covs.list1) <- levels.group
   ngroup.list <- ngroup.list[levels.group]
   levels.group <- as.character(unique(fac))
   results.Penrose.dist <- list(name = "Penrose distances",
                                means.vec = means.vec,
-                               covs.list = covs.list, Samp.sizes = ngroup.list,
+                               covs.list = covs.list1, Samp.sizes = ngroup.list,
                                PooledCov = V.pool, Penrose.mat = P,
                                Penrose.dist = as.dist(P), group = group,
                                levels.group = levels.group,

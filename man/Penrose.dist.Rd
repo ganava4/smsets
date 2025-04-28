@@ -11,7 +11,7 @@ Penrose.dist(x, group)
 response variables).}
 
 \item{group}{The classification factor defining \emph{m} samples or groups.
-It must be one of the variables in \code{x}}
+It must be one of the variables in \code{x}.}
 }
 \value{
 Returns an object of class \code{"Penrose.dist"}, a list containing
@@ -19,16 +19,20 @@ the following components:
 \tabular{llllllllllll}{
 \code{ name} \tab A character string describing the function. \cr
 \code{means.vec} \tab A numeric matrix with \emph{p} rows and \emph{m}
-columns giving the mean of each variable per group \cr
+columns giving the mean of each variable per group. \cr
 \code{covs.list} \tab A list containing the \emph{m} sample covariance
-matrices  \cr
+matrices.  \cr
 \code{Samp.sizes} \tab A table showing the number of observations used in
-the calculation of the covariance matrix for each group  \cr
-\code{PooledCov} \tab The pooled covariance matrix  \cr
+the calculation of the covariance matrix for each group.  \cr
+\code{PooledCov} \tab The pooled covariance matrix. This matrix can be
+accessed and used as an input argument for the calculation of
+Mahalanobis distance in packages \pkg{biotools} (da Silva, 2017, 2021)
+and \pkg{ecodist} (Goslee and Urban 2007).
+\cr
 \code{Penrose.mat} \tab The Penrose distances given as a "\code{matrix}"
-object \cr
+object. \cr
 \code{Penros.dist} \tab The Penrose distances given as a "\code{dist}"
-object \cr
+object. \cr
 \code{group} \tab A character string specifying the name of the
 classification factor defining groups.  \cr
 \code{levels.group} \tab a vector of length \emph{m}, showing the levels
@@ -40,21 +44,25 @@ names.  \cr
 }
 }
 \description{
-Computes Penrose's distance between \emph{m} multivariate populations, when
-information is available on the means and variances of the populations.
+Computes Penrose's distance between \emph{m} multivariate populations
+or samples, when information is available on the means and variances.
 }
 \details{
 Let the mean of \eqn{X_k} in population \emph{i} be \eqn{\mu_{ki}},
-\eqn{k=1,...,p; i=1,...,m} and assume that the variance of \eqn{X_k} is
-\eqn{V_k} in all the populations. The Penrose (1953) distance \eqn{P_{ij}}
-between population \emph{i} and population \emph{j} is given by
+\eqn{k=1,...,p; i=1,...,m} and assume that the variance of variable \eqn{X_k}
+is \eqn{V_k}. The Penrose (1953) distance \eqn{P_{ij}} between population
+\emph{i} and population \emph{j} is given by
 
 \deqn{P_{ij} = \sum_{k = 1}^{p} \frac{(\mu_{ki} - \mu_{kj})^2}{pV_k}}
+
+Penrose's distances between multivariate samples are computed using this
+expression, but \eqn{\mu_{ki}}, \eqn{\mu_{kj}} and \eqn{V_k} being replaced
+by their corresponding sample estimates.
 
 A disadvantage of Penrose's measure is that it does not consider the
 correlations between the \emph{p} variables.
 
-The function requires package \code{biotools} (da Silva, 2017, 2021)
+The function requires package \pkg{biotools} (da Silva, 2017, 2021).
 }
 \examples{
 data(skulls)
@@ -72,6 +80,10 @@ da Silva, A.R., Malafaia, G., and Menezes, I.P.P. (2017). biotools: an R
 function to predict spatial gene diversity via an individual-based approach.
 \emph{Genetics and Molecular Research} 16.
 https://doi.org/10.4238/gmr16029655.
+
+Goslee, S.C. and Urban, D.L. (2007). The ecodist package for
+dissimilarity-based analysis of ecological data. \emph{Journal of Statistical
+Software} 22(7):1-19. DOI:10.18637/jss.v022.i07
 
 Manly, B.F.J., Navarro Alberto, J.A. and Gerow, K. (2024)
 \emph{Multivariate Statistical Methods. A Primer}. 5th Edn.
