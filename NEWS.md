@@ -1,3 +1,5 @@
+# smsets (development version)
+
 # smsets 1.1.0
 
 * Now the package includes a vignette and the copyright holder.
