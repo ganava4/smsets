@@ -1,4 +1,5 @@
-# smsets (development version)
+# smsets (development version 1.1.0.9000)
+* Added /value tags to .Rd files.
 
 # smsets 1.1.0
 
