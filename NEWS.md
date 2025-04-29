@@ -1,6 +1,7 @@
 # smsets 1.1.0
 
-Now the package includes a vignette and the copyright holder
+* Now the package includes a vignette and the copyright holder.
+* Fixed a bug in the Penrose's distance calculator
 
 # smsets 1.0.0
 
