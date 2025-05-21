@@ -4,6 +4,10 @@
 
 * This is a new release.
 
+### Version 1.1.1 is a patched 1.1.0 version (2025-20-05)
+
+Removed checks from github.
+
 ### Fixing package version 1.1.0 (2025-28-04).
 
 Answers to Konstanze's indications 
