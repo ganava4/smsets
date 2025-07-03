@@ -4,7 +4,7 @@
 
 * This is a new release.
 
-### Version 1.2.0 is a patched 1.1.1 version (2025-03-07).
+### Version 1.2.0 is a patched 1.1.1 version (2025-02-07).
 
 Removed checks from github.
 
