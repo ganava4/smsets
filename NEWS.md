@@ -1,8 +1,5 @@
 # smsets 1.2.2
 
-# smsets 1.3.0
-
-# smsets 1.2.0
 Edited incorrect doi link
 
 # smsets 1.1.1
