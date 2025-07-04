@@ -4,7 +4,9 @@
 
 * This is a new release.
 
-### Version 1.2.2 is a patched version (2025-02-07).
+### Version 1.2.2 is a patched version (2025-04-07).
+
+doi link edited
 
 Removed checks from github.
 
