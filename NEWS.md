@@ -1,5 +1,7 @@
 # smsets 1.2.3
 
+doi fixed (Finally!)
+
 # smsets 1.2.2
 
 Edited incorrect doi link

@@ -4,6 +4,10 @@
 
 * This is a new release.
 
+### Version 1.2.3 is a patched version (2025-04-07)
+
+Previous doi link unsuccessful. Fixed according to Uwe Ligges' instructions
+
 ### Version 1.2.2 is a patched version (2025-04-07).
 
 doi link edited
