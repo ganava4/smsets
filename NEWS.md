@@ -1,3 +1,10 @@
+# smsets 2.0.0
+* 
+`Levenetestsms.mv` function and its corresponding `print` method have been 
+implemented, to allow the calculation of robust Levene's tests for the 
+comparison of variation of m > 2 samples in multivariate data. 
+* The vignette has been updated accordingly.
+
 # smsets 1.2.3
 
 doi fixed (Finally!)

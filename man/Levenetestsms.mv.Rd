@@ -84,7 +84,7 @@ an annotated output of the univariate Levene tests and, optionally, the
 multivariate Levene's test.
 }
 \description{
-Performs Levene tests for \emph{m} samples on \emph{p} responses, based on
+Performs Levene's tests for \emph{m} samples on \emph{p} responses, based on
 (univariate) One-Way ANOVAs and One-Way MANOVAs applied to absolute
 differences around medians. Significance levels of the univariate tests of
 variation can be corrected using any of the adjustment methods for multiple

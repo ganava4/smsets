@@ -18,7 +18,7 @@
 #' approach. \emph{Biometrika}, 38, 330–336. doi:10.2307/2332579.
 #'
 #' @description
-#' Performs Levene tests for \emph{m} samples on \emph{p} responses, based on
+#' Performs Levene's tests for \emph{m} samples on \emph{p} responses, based on
 #' (univariate) One-Way ANOVAs and One-Way MANOVAs applied to absolute
 #' differences around medians. Significance levels of the univariate tests of
 #' variation can be corrected using any of the adjustment methods for multiple
