@@ -62,8 +62,9 @@ OnewayMANOVA <- function(x, group)
 {
   group <- deparse(substitute(group))
   fac <- x[, names(x) %in% c(group)]
-  levels.group <- as.factor(unique(fac))
   df <- x[, !names(x) %in% c(group)]
+  levels.group <- as.character(unique(fac))
+  fac <- factor(fac, levels = levels.group)
   col.fac <- which(names(x) == group)
   n.levels <- length(unique(x[, col.fac]))
   n.vars <- ncol(x) - 1

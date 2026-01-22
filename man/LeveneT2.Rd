@@ -2,8 +2,7 @@
 % Please edit documentation in R/LeveneT2.R
 \name{LeveneT2}
 \alias{LeveneT2}
-\title{Levene's test for two multivariate samples based on Hotelling's
-\eqn{T^2} test with extra information}
+\title{Levene's test for two multivariate samples based on Hotelling's \eqn{T^2} test with extra information}
 \usage{
 LeveneT2(x, group, level1, var.equal = TRUE)
 }

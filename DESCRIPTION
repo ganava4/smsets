@@ -12,11 +12,11 @@ Description: A collection of simple parameter estimation and tests for the compa
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.3.2
+RoxygenNote: 7.3.3
 Depends: 
     R (>= 3.6)
 LazyData: true
-Imports: stringr, data.table, Hotelling, biotools
+Imports: stringr, data.table, Hotelling, biotools, effectsize, crayon
 Suggests:
     car,
     knitr,

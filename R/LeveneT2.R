@@ -1,5 +1,4 @@
-#' @title Levene's test for two multivariate samples based on Hotelling's
-#' \eqn{T^2} test with extra information
+#' @title Levene's test for two multivariate samples based on Hotelling's \eqn{T^2} test with extra information
 #'
 #' @author Jorge Navarro Alberto, \email{ganava4@@gmail.com}
 #'

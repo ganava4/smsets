@@ -1,12 +1,15 @@
 ---
 title: "**smsets: Simple multivariate statistical estimation and tests**"
+subtitle: "Version 1.2.3"
 author: Jorge A. Navarro Alberto
 output:
   pdf_document:
+    latex_engine: xelatex
     toc: yes
     toc_depth: 3
     highlight: null
     number_sections: yes
+monofont: "DejaVu Sans Mono"
 bibliography: REFVIGNETTE.bib
 csl: journal-of-biogeography
 vignette: >
@@ -24,11 +27,11 @@ knitr::opts_chunk$set(
 
 # Abstract {-}
 
-The document describes the functions implemented in the `smsets` package, which focuses on the estimation and comparison of means and measures of variation, and one distance measure (Penrose's distance) as described in Chapters 4 and 5 of the book _Multivariate Statistical Methods: A Primer. 5th Edition_ (MSMAP5) by Manly et al. -@Manly2024. Worked examples for each function are presented, all of them characterized by the simple input function arguments, given the simple data layout needed to perform the statistical analyses (ranging from two univariate/multivariate samples to multivariate samples classified by one-single factor with *m* levels). Multiple two-sample t-tests and Levene tests on more than one response vector can be optionally corrected by any of the significance level adjustment methods for multiple comparisons offered by the `p.adjust` function. Effects sizes are also computed in these multiple univariate tests. The two-sample comparison of multivariate means is performed by Hotelling’s test while the comparison of multivariate variation in two samples can be executed with two unconventional methods: a Levene’s test based on Hotelling's $T^2$, and van Valen’s test. The comparison of multivariate means for a single factor is also available as well as the comparison of variation using Box’s M test using an approximate F-statistic. Finally, a Penrose’s distance calculator has been implemented as an alternative procedure to compare _m_ multivariate populations, using means and variances only.
+The document describes the functions implemented in the `smsets` package, which focuses on the estimation and comparison of means and measures of variation, and one distance measure (Penrose's distance) as described in Chapters 4 and 5 of the book _Multivariate Statistical Methods: A Primer. 5th Edition_ (MSMAP5) by Manly et al. -@Manly2024. Worked examples for each function are presented, all of them characterized by the simple input function arguments, given the simple data layout needed to perform the statistical analyses (ranging from two univariate/multivariate samples to multivariate samples classified by one-single factor with *m* levels). Multiple two-sample t-tests and Levene tests on more than one response vector can be optionally corrected by any of the significance level adjustment methods for multiple comparisons offered by the `p.adjust` function. Effects sizes are also computed in these multiple univariate tests. The two-sample comparison of multivariate means is performed by Hotelling’s test while the comparison of multivariate variation in two samples can be executed with two unconventional methods: a Levene’s test based on Hotelling's $T^2$, and van Valen’s test. The comparison of multivariate means for a single factor is also available as well as the comparison of variation using Box’s M test using an approximate F-statistic. Following the idea behind Levene's test for one single variable, robust tests for the comparison of variation in _m_ samples from multivariate data are also included in the package. Finally, a Penrose’s distance calculator has been implemented as an alternative procedure to compare _m_ multivariate populations, using means and variances only.
 
 # Comparison of Mean Values for Two Samples
 
-Tests of significance for means and variances can be performed when several variables are measured on the same sample units and the approach to be taken can be either univariate or multivariate. This vignette covers both approaches, using `base` R- commands and functions implemented in the `smsets` package to ease the calculations described in Chapter 4 of the MSMAP5.
+Tests of significance for means and variances can be performed when several variables are measured on the same sample units and the approach to be taken can be either univariate or multivariate. This vignette covers both approaches, using `base` R- commands and functions implemented in the `smsets` package to ease the calculations described in Chapter 4 of MSMAP5.
 
 ## Comparison of Mean Values for Two Samples: The Single-Variable Case
 
@@ -158,7 +161,7 @@ none.Levene2s.mv <- Levenetests2s.mv(sparrows, Survivorship, "S",
 none.Levene2s.mv
 ```
 
-As described in Section 4.6.1 of MSMAP5, "only for the length of the humerus is the result significantly low at 5% level". However, it is recommended here to rely on tests based on adjustments like fdr. Therefore, it is more appropriate to conclude that, on the basis on multiple univariate one-sided Levene's tests, apparently the five morphological variables for survivor sparrows do not vary less than those for nonsurvivors.
+As described in Section 4.6.1 of MSMAP5, "only for the length of the humerus is the result significantly low at 5% level". However, it is recommended here to rely on tests based on adjustments like _fdr_. Therefore, it is more appropriate to conclude that, on the basis on multiple univariate one-sided Levene's tests, apparently the five morphological variables for survivor sparrows do not vary less than those for nonsurvivors.
 
 More suitable approaches can be considered for testing variation from a multivariate point of view. Two methods of this sort are described in the next section.
 
@@ -194,6 +197,7 @@ res.VanValen <- VanValen(sparrows, group = "Survivorship", level1 = "S",
                          alternative = "less", var.equal = TRUE)
 print(res.VanValen, long = TRUE)
 ```
+
 
 # Comparison of Means for Several Samples
 
@@ -254,6 +258,24 @@ print(resBoxM.F, long = TRUE)
 ```
 
 Differences between the _p_-values for the two approximations, chi square and _F_, are negligible.
+
+
+## Robust _m_-sample Levene's test, based on absolute deviations around medians
+
+In Section 4.8 in -@Manly2024 it is pointed out that Box's test is sensitive to deviations from normality thus, robust alternatives to Box's test are recommended. One of the those alternatives is Levene's test based on absolute deviations from sample medians for the data in _m_ samples. For a single variable, these can be treated as the observations for a one-factor analysis of variance (or one-way ANOVA). This case was illustrated in Section 3.1.1 of this vignette, using `leveneTest` function from the `car` package (Fox & Weisberg, 2019). A significant F-ratio in any of the _p_ variables considered individually indicates that populations differ in covariance matrices. When all variables are considered together, the multivariate Levene's test version can generated with any of the four tests produced by `manova` or `OneWayMANOVA` in `smsets`, and a significant result indicates that the covariance matrix is not constant for the _m_ populations.
+
+The application of Levene's test to one variable at a time involves the application of _p_ one-way ANOVAs for the absolute deviations around medians. Therefore, the _p_-values can be subject to corrections for multiple testing, depending on the number of response variables analyzed, _p_. `Levenetestsms.mv` allows to specify adjustments to _p_-values (as described in 1.1.2 and 3.1.2.) with the argument `P.adjust`. The code shown below produces Levene's tests, both univariate and multivariate, for the comparison of variation among the _m_=5 samples from various past ages on the basis of _p_ = 4 measurements on male Egyptian skulls. The _p_-values of each univariate Levene's tests have been adjusted using Bonferroni's correction, and the implicit one-way ANOVAs assume that the variance of absolute deviations around medians are equal. The option `format = TRUE` in the `print` method for the object `res.Levenems.mv` establishes that the ANOVA tables will be displayed using the output format produced by both `oneway.test` and `anova.lm`. The `print` method for `Levenetestsms.mv` determines that `EffectSize = TRUE` thus, by default, four different effect size measures among samples for each variable are computed. These measures indicate the magnitude of differences in variation among `Period`s for each measurement made. The option `multivariate = TRUE` dictates that the multivariate Levene's test is requested, using Pillai's statistic as the (default) test statistic for the MANOVA. Finally, as a consequence of the option `long = TRUE`, the output listing also contains the matrix of medians for the original measurements, and the matrix of means and variances of absolute deviations around medians.  
+
+```{r, eval = TRUE, message = FALSE, comment = ""}
+data(skulls)
+res.Levenems.mv <- Levenetestsms.mv(skulls, Period, var.equal = TRUE,
+                                    P.adjust = "bonferroni")
+```
+
+```{r, eval = TRUE, comment = ""}
+print(res.Levenems.mv, format = "both", multivariate = TRUE, long = TRUE)
+```
+
 
 # Extra function: Penrose.dist
 
