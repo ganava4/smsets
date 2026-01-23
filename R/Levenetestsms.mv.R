@@ -15,7 +15,7 @@
 #' Chapman and Hall/CRC.
 #'
 #' Welch, B.L. (1951). On the comparison of several mean values: an alternative
-#' approach. \emph{Biometrika}, 38, 330–336. doi:10.2307/2332579.
+#' approach. \emph{Biometrika}, 38, 330-336. doi:10.2307/2332579.
 #'
 #' @description
 #' Performs Levene's tests for \emph{m} samples on \emph{p} responses, based on
@@ -100,9 +100,10 @@
 #'    chosen. \cr
 #'    \code{Eff_sizes} \tab A list of length \emph{p} containing four effect
 #'    size measures for an F-test in one-way ANOVA, and their respective 95%
-#'    confidence intervals. Those measures are η², ω², ϵ² and Cohen's f, as
-#'    implemented in the \pkg{effectsize} package (Ben-Shachar et al. 2020).
-#'    When \code{var.equal = FALSE} these effect sizes are approximations.\cr
+#'    confidence intervals. Those measures are \eqn{\eta^2}, \eqn{\omega^2},
+#'    \eqn{\epsilon^2} and Cohen's \emph{f}, as implemented in the
+#'    \pkg{effectsize} package (Ben-Shachar et al. 2020). When
+#'    \code{var.equal = FALSE} these effect sizes are approximations.\cr
 #'    \code{OWM_absdev} \tab A list of class "\code{manova}" containing  the
 #'    results of the One-Way MANOVA applied to the absolute deviations around
 #'    medians, i.e., the multivariate Levene's test. \cr
@@ -195,7 +196,7 @@ Levenetestsms.mv <- function(x, group, var.equal = FALSE, P.adjust = "none")
     MAT_ES[3, ] <- as.matrix(EPSILON2)
     COHENSF <- effectsize :: cohens_f(OneWayANOVAs[[k]])[, c(1, 3, 4)]
     MAT_ES[4, ] <- as.matrix(COHENSF)
-    rownames(MAT_ES) <- c("η\u00B2", "ω\u00B2", "ϵ\u00B2", "Cohen's f")
+    rownames(MAT_ES) <- c("eta^2", "omega^2", "epsilon^2", "Cohen's f")
     colnames(MAT_ES) <- c("E.S. Measure", "95%-LCL", "95%-UCL")
     Eff_sizes[[k]] <- MAT_ES
   }

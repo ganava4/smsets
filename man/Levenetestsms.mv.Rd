@@ -63,9 +63,10 @@ variances were treated as being equal \code{TRUE} or not \code{FALSE}.
 chosen. \cr
 \code{Eff_sizes} \tab A list of length \emph{p} containing four effect
 size measures for an F-test in one-way ANOVA, and their respective 95\%
-confidence intervals. Those measures are η², ω², ϵ² and Cohen's f, as
-implemented in the \pkg{effectsize} package (Ben-Shachar et al. 2020).
-When \code{var.equal = FALSE} these effect sizes are approximations.\cr
+confidence intervals. Those measures are \eqn{\eta^2}, \eqn{\omega^2},
+\eqn{\epsilon^2} and Cohen's \emph{f}, as implemented in the
+\pkg{effectsize} package (Ben-Shachar et al. 2020). When
+\code{var.equal = FALSE} these effect sizes are approximations.\cr
 \code{OWM_absdev} \tab A list of class "\code{manova}" containing  the
 results of the One-Way MANOVA applied to the absolute deviations around
 medians, i.e., the multivariate Levene's test. \cr
@@ -134,7 +135,7 @@ Manly, B.F.J., Navarro Alberto, J.A. and Gerow, K. (2024)
 Chapman and Hall/CRC.
 
 Welch, B.L. (1951). On the comparison of several mean values: an alternative
-approach. \emph{Biometrika}, 38, 330–336. doi:10.2307/2332579.
+approach. \emph{Biometrika}, 38, 330-336. doi:10.2307/2332579.
 }
 \author{
 Jorge Navarro Alberto, \email{ganava4@gmail.com}

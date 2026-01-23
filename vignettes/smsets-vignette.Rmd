@@ -5,7 +5,7 @@ date: "`r format(Sys.time(), '%d %B, %Y')`"
 author: Jorge A. Navarro Alberto
 output:
   pdf_document:
-    latex_engine: xelatex
+    latex_engine: lualatex
     toc: yes
     toc_depth: 3
     highlight: null
