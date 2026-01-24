@@ -1,8 +1,15 @@
 ## R CMD check results
 
-0 errors | 0 warnings | 1 note
+0 errors | 0 warnings | 0 notes
 
 * This is a new release.
+
+### Version 2.0.0 is a new version (2026-01-24)
+
+Two new functions (Levenetestsms.mv and its corresponding print method) have
+been added to the package to allow calculation of robust Levene's tests for the 
+comparison of variation of m samples in multivariate data. The vignette has been
+updated accordingly.
 
 ### Version 1.2.3 is a patched version (2025-04-07)
 

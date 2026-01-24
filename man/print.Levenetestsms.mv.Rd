@@ -22,7 +22,8 @@ formatted, must be one of \code{"oneway.test"} (default), \code{"anova.lm"}
 or \code{"both"}.}
 
 \item{EffectSize}{a logical variable. If \code{TRUE} (default), the measures
-of effect size η², ω², ϵ², and Cohen's f are returned.}
+of effect size \eqn{\eta^2}, \eqn{\omega^2}, \eqn{\epsilon^2}, and Cohen's f
+are returned.}
 
 \item{multivariate}{a logical variable. If \code{TRUE}, the multivariate
 Levene's test is returned. The test statistic chosen can be set with the

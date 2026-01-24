@@ -188,17 +188,21 @@ Levenetestsms.mv <- function(x, group, var.equal = FALSE, P.adjust = "none")
     ANOVATables[[k]]$'F value'[1] <- OneWayANOVAs[[k]]$statistic
     ANOVATables[[k]]$'Pr(>F)'[1] <- P.value.adj[k]
     MAT_ES <- matrix(NA, nrow = 4, ncol = 3)
-    ETA2 <- effectsize :: eta_squared(OneWayANOVAs[[k]])[, c(1, 3, 4)]
+    suppressMessages(ETA2 <- effectsize ::
+                       eta_squared(OneWayANOVAs[[k]])[, c(1, 3, 4)])
     MAT_ES[1, ] <- as.matrix(ETA2)
-    OMEGA2 <- effectsize :: omega_squared(OneWayANOVAs[[k]])[, c(1, 3, 4)]
+    suppressMessages(OMEGA2 <- effectsize ::
+                       omega_squared(OneWayANOVAs[[k]])[, c(1, 3, 4)])
     MAT_ES[2, ] <- as.matrix(OMEGA2)
-    EPSILON2 <- effectsize :: epsilon_squared(OneWayANOVAs[[k]])[, c(1, 3, 4)]
+    suppressMessages(EPSILON2 <- effectsize ::
+                       epsilon_squared(OneWayANOVAs[[k]])[, c(1, 3, 4)])
     MAT_ES[3, ] <- as.matrix(EPSILON2)
-    COHENSF <- effectsize :: cohens_f(OneWayANOVAs[[k]])[, c(1, 3, 4)]
+    suppressMessages(COHENSF <- effectsize ::
+                       cohens_f(OneWayANOVAs[[k]])[, c(1, 3, 4)])
     MAT_ES[4, ] <- as.matrix(COHENSF)
     rownames(MAT_ES) <- c("eta^2", "omega^2", "epsilon^2", "Cohen's f")
     colnames(MAT_ES) <- c("E.S. Measure", "95%-LCL", "95%-UCL")
-    Eff_sizes[[k]] <- MAT_ES
+    suppressMessages(Eff_sizes[[k]] <- MAT_ES)
   }
   names(OneWayANOVAs) <- names(ANOVATables) <- names(Eff_sizes) <- names(df)
   if (P.adjust != "none") {

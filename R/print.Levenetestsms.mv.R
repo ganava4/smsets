@@ -12,7 +12,8 @@
 #' formatted, must be one of \code{"oneway.test"} (default), \code{"anova.lm"}
 #' or \code{"both"}.
 #' @param EffectSize a logical variable. If \code{TRUE} (default), the measures
-#' of effect size η², ω², ϵ², and Cohen's f are returned.
+#' of effect size \eqn{\eta^2}, \eqn{\omega^2}, \eqn{\epsilon^2}, and Cohen's f
+#' are returned.
 #' @param multivariate a logical variable. If \code{TRUE}, the multivariate
 #' Levene's test is returned. The test statistic chosen can be set with the
 #' optional argument \code{mv_statistic}.
@@ -133,7 +134,9 @@ print.Levenetestsms.mv <- function(x, format = "oneway.test", EffectSize = TRUE,
       }
     }
     if (EffectSize == TRUE) {
-      cat("\nEffect size (E.S.) of variation for each variable\n\n")
+      cat("\nEffect size (E.S.) of variation for each variable.\n")
+cat("For one-way between subjects designs, partial eta/omega/epsilon squared are
+equivalent to eta/omega/epsilon squared. Returning eta/omega/epsilon squared.\n\n")
       for (k in 1: length(x$variables)) {
         cat("Response:", x$variables[k], "\n")
         print(round(x$Eff_sizes[[k]], digits = 3))

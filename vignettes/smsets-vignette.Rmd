@@ -5,12 +5,10 @@ date: "`r format(Sys.time(), '%d %B, %Y')`"
 author: Jorge A. Navarro Alberto
 output:
   pdf_document:
-    latex_engine: lualatex
     toc: yes
     toc_depth: 3
     highlight: null
     number_sections: yes
-monofont: "DejaVu Sans Mono"
 bibliography: REFVIGNETTE.bib
 csl: journal-of-biogeography
 vignette: >
